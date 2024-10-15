@@ -1,18 +1,17 @@
+require('dotenv').config();
+
 const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
-
-
-
-console.log('PG_URL:', process.env.PG_URL);
-console.log('SESSION_SECRET:', process.env.SESSION_SECRET ? 'Loaded' : 'Not Loaded');
 
 const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 const routes = require('./controllers');
-const sequelize = require('./config/connection');
+// const sequelize = require('./config/connection');
+const client = require('./config/connection');
 
+//CREATE SERVER
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -32,14 +31,13 @@ app.use(
 	session({
 	  secret: process.env.SESSION_SECRET,
 	  store: new SequelizeStore({
-		db: sequelize,
+		db: client,
 	  }),
 	  saveUninitialized: false,
-	  resave: false, // we support the touch method so per the express-session docs this should be set to false
-	  // proxy: true, // if you do SSL outside of node.
-	  // Only send a cookie that cannot be accessed by Browser JS
+	  resave: false, 
+	  proxy: true, 
 	  cookie: {
-		httpOnly: true
+		httpOnly: true // sends a secure cookie that cannot be accessed by browser JS
 	  }
 	})
   );
@@ -48,6 +46,9 @@ app.use(
 app.use(routes);
 
 // turn on connection to db and server
-sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
-});
+client.sync({ force: false })
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log('Server started on port', PORT);
+    });
+  }); 
