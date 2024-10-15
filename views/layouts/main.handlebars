@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kick The Bucket</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="bg-slate-900 text-white flex flex-col size-full content-center">
+  <header class="flex justify-between p-2 bg-teal-500">
+    <a href="/" class="text-2xl m-2">Kick The Bucket</a>
+    <nav class="flex justify-between gap-7 mx-4 items-center">
+      {{#if user}}
+		<a href="/list">Your List</a>
+      	<a href="/search">Search</a>
+      	<a href="/logout">Log Out</a>
+		{{else}}
+		<a href="/login">Log In</a>
+		<a href="/register">Register</a>
+	  {{/if}}
+    </nav>
+  </header>
+  <div class="grid items-center self-center bg-slate-700 p-3 m-4 w-fit rounded-md">
+    {{{body}}}
+  </div>
+
+  <footer>
+
+  </footer>
+
+
+
+</body>
+
+
+</html>

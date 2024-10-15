@@ -1,0 +1,37 @@
+
+<h1 class="text-2xl">{{state}}</h1>
+<h1>Your Results:</h1>
+<h1>{{state}}</h1>
+<div class="size-96" id="map"></div>
+
+<div>
+    <p class="centered">
+        <strong>{{this.country}}, {{this.city}}, {{this.state}}</strong>
+        <p >Landmark: {{this.landmark}}</p>
+    <p>
+</div>
+
+<div class="flex justify-between mt-3 gap-3">
+    <button class="add-to-favorites bg-white text-black size-full rounded-lg"  data-destination-id="{{place.id}}">Add to Favorites</button>
+    <a href="/list" class="bg-white text-black text-center size-full rounded-lg">View All Favorites</a>
+</div>
+
+<script>
+    const country = '{{country}}'
+    const state = '{{state}}'
+    const city = '{{city}}'
+    const landmark = '{{landmark}}'
+
+
+</script>
+
+<script>
+        (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })({
+            key: "AIzaSyBQ2we2dx9nzsbqE4Mh7Icfh9SDgZkqrc4",
+            v: "weekly",
+            // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+            // Add other bootstrap parameters as needed, using camel case.
+        });
+</script>
+<script src="/js/search.js"></script>
+

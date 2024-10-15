@@ -1,0 +1,18 @@
+<div class="flex flex-col justify-center">
+	<h1 class="text-center text-2xl mb-2">Search For a Location</h1>
+    <form class="flex flex-col p-3" action="/search" method="POST">
+        <label>Country Name</label>
+        <input name="country" type="text" class="px-3 py-1 rounded-lg text-black" placeholder="Country">
+
+        <label>States/Subdivisions</label>
+        <input name="state" type="text" class="px-3 py-1 rounded-lg text-black" placeholder="States/Subdivisions">
+
+        <label>City/Province</label>
+        <input  name="city" type="text" class="px-3 py-1 rounded-lg text-black" placeholder="City/Province">
+
+        <label>Landmark</label>
+        <input name="landmark" type="text" class="px-3 py-1 rounded-lg text-black" placeholder="Landmark">
+
+        <button class="bg-white text-black rounded-lg my-4 py-1 w-full" type="submit">Submit</button>
+    </form>
+</div>

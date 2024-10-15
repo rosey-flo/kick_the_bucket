@@ -1,0 +1,17 @@
+[
+	{
+		"city_id": "1",
+		"landmark_name": "Eiffel Tower",
+		"travel_time": 25
+	},
+	{
+		"city_id": "2",
+		"landmark_name": "Tokyo Tower",
+		"travel_time": 20
+	},
+	{
+		"city_id": "3",
+		"landmark_name": "Chapultepec Castle",
+		"travel_time": 40
+	}
+]
