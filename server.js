@@ -2,6 +2,11 @@ const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
 
+
+
+console.log('PG_URL:', process.env.PG_URL);
+console.log('SESSION_SECRET:', process.env.SESSION_SECRET ? 'Loaded' : 'Not Loaded');
+
 const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
