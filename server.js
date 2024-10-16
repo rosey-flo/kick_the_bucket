@@ -1,19 +1,16 @@
 require('dotenv').config();
 
-console.log('Environment Variables:');
-console.log('PG_URL:', process.env.PG_URL);
-
-
 const express = require('express');
-const path = require('path');
-const exphbs = require('express-handlebars');
-
 const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const exphbs = require('express-handlebars');
+const methodOverride = require('method-override');
+const path = require('path');
 
+const client = require('./config/connection');
 const routes = require('./controllers');
 // const sequelize = require('./config/connection');
-const client = require('./config/connection');
+
 
 //CREATE SERVER
 const app = express();
@@ -25,6 +22,10 @@ const hbs = exphbs.create({  });
 // Inform Express.js on which template engine to use
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+
+//Allow other request types through forms
+app.use(methodOverride('_method'));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
