@@ -1,5 +1,9 @@
 require('dotenv').config();
 
+console.log('Environment Variables:');
+console.log('PG_URL:', process.env.PG_URL);
+
+
 const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
